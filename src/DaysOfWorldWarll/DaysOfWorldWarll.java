@@ -4,8 +4,9 @@ import java.util.*;
 
 public class DaysOfWorldWarll {
     public static void main(String[] args){
-        GregorianCalendar start = new GregorianCalendar(1939, 9, 1);
-        GregorianCalendar end = new GregorianCalendar(1945, 9, 2);
+        GregorianCalendar start = new GregorianCalendar(1969, Calendar.NOVEMBER, 9);
+        GregorianCalendar end = new GregorianCalendar(2018, Calendar.AUGUST, 21);
+        System.out.println(end.get(Calendar.DAY_OF_WEEK));
         allWar(start, end);
         int dayOfStart = start.get(Calendar.DAY_OF_YEAR);
         int dayOfEnd = end.get(Calendar.DAY_OF_YEAR);
