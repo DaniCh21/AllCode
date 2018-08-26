@@ -37,6 +37,8 @@ class Dispatcher{
         da.displayKickedStudents();
         da.changeStudentsMarks(6, 9.9);
         da.displayAllCurrentStudents();
+        da.kickStudent(16, 4);
+        da.displayAllCurrentStudents();
 
     }
 }
