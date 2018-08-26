@@ -14,10 +14,12 @@ class Group{
         }
     }
     void kickStudent (int index){
-        numberOfStudents--;
         temp = namesOfCurrent[index];
-        System.out.println("Student " + namesOfCurrent[index].name + " was kicked");
-        namesOfCurrent[index] = null;
+        for (int g = 1; g < (numberOfStudents - index + 1); g++){
+            namesOfCurrent[index - 1 + g] = namesOfCurrent[index + g];
+        }
+        System.out.println("Student " + temp.name + " was kicked");
+        numberOfStudents--;
     }
 
     void displayAllCurentStudents(){

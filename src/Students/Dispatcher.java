@@ -43,5 +43,8 @@ class Dispatcher{
         da.displayAllCurentStudents();
         da.kickStudent(2);
         da.displayAllCurentStudents();
+        da.addStudent(new Student("Lololoshka", 10.1));
+        da.displayAllCurentStudents();
+
     }
 }
