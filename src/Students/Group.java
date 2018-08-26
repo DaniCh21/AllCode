@@ -7,6 +7,13 @@ class Group{
     int numberOfKicked = 0;
     final Student namesOfKicked[] = new Student[30];
 
+    void changeStudentsMarks (int index, double newMark){
+        if (index < numberOfStudents) {
+            System.out.println("Student " + namesOfCurrent[index].name + " used to have average estimate: " + namesOfCurrent[index].averageMark + ", but now it is: " + newMark + ".");
+            namesOfCurrent[index].averageMark = newMark;
+        } else System.out.println("Can't change average estimate, due to student with this index (" + index + ") does not exist.");
+    }
+
     void addStudent(Student student){
         if (numberOfStudents < namesOfCurrent.length){
         numberOfStudents++;
@@ -33,7 +40,7 @@ class Group{
         System.out.println("////////////////////////////////////");
         System.out.println("CURRENT STUDENTS IN GROUP:");
         for (int i = 0; i < numberOfStudents; i++){
-                System.out.println((i+1) + ". Student " + namesOfCurrent[i].name + " has average estimate: " + namesOfCurrent[i].ovverageMark + ". Index (" + i + ")");
+                System.out.println((i+1) + ". Student " + namesOfCurrent[i].name + " has average estimate: " + namesOfCurrent[i].averageMark + ". Index (" + i + ")");
         }
         System.out.println("////////////////////////////////////");
 
@@ -42,7 +49,7 @@ class Group{
         System.out.println("------------------------------------");
         System.out.println("These students were kicked:");
         for (int i = 0; i < numberOfKicked; i++){
-                System.out.println((i+1) + ". Student " + namesOfKicked[i].name + " has average estimate: " + namesOfKicked[i].ovverageMark + ". Index (" + i + ")");
+                System.out.println((i+1) + ". Student " + namesOfKicked[i].name + " has average estimate: " + namesOfKicked[i].averageMark + ". Index (" + i + ")");
         }
         System.out.println("------------------------------------");
 

@@ -35,6 +35,8 @@ class Dispatcher{
         da.addStudent(new Student("Lololoshka", 10.1));
         da.displayAllCurrentStudents();
         da.displayKickedStudents();
+        da.changeStudentsMarks(6, 9.9);
+        da.displayAllCurrentStudents();
 
     }
 }
