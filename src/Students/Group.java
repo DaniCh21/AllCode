@@ -2,42 +2,55 @@ package Students;
 
 class Group{
     int numberOfStudents;
+    final Student namesOfCurrent[] = new Student[30];
     Student temp;
-    final Student namesOfCurrent[]= new Student[30];
+    int numberOfKicked = 0;
+    final Student namesOfKicked[] = new Student[30];
+
     void addStudent(Student student){
+        if (numberOfStudents < namesOfCurrent.length){
         numberOfStudents++;
-        for (int i = 0; i < numberOfStudents; i++){
-            if (namesOfCurrent[i] == null){                                 //проверка на null (при удалении индекс ссылается на null) и запись в эту ячейку
-                namesOfCurrent[i] = student;
-                break;
-            }
-        }
+        namesOfCurrent[numberOfStudents - 1] = student;
+            System.out.println("Student " + student.name + " added.");
+        } else System.out.println("This group already have 30 students.");
     }
+
     void kickStudent (int index){
         temp = namesOfCurrent[index];
+        if (numberOfKicked < namesOfKicked.length) {                            //creating an array of kicked students
+            numberOfKicked++;
+            namesOfKicked[numberOfKicked - 1] = temp;
+        } else System.out.println("This group already had kicked 30 students.");
+
         for (int g = 1; g < (numberOfStudents - index + 1); g++){
             namesOfCurrent[index - 1 + g] = namesOfCurrent[index + g];
         }
-        System.out.println("Student " + temp.name + " was kicked");
+        System.out.println("Student " + temp.name + " kicked.");
         numberOfStudents--;
     }
 
-    void displayAllCurentStudents(){
+    void displayAllCurrentStudents(){
         System.out.println("////////////////////////////////////");
         System.out.println("CURRENT STUDENTS IN GROUP:");
         for (int i = 0; i < numberOfStudents; i++){
-            if (namesOfCurrent[i] != null) {
                 System.out.println((i+1) + ". Student " + namesOfCurrent[i].name + " has average estimate: " + namesOfCurrent[i].ovverageMark + ". Index (" + i + ")");
-            } else System.out.println("Sorry. Student " + temp.name + " that had average estimate: " + temp.ovverageMark + " and with this index (" + i + ") was kicked");
         }
         System.out.println("////////////////////////////////////");
+
+    }
+    void displayKickedStudents(){
+        System.out.println("------------------------------------");
+        System.out.println("These students were kicked:");
+        for (int i = 0; i < numberOfKicked; i++){
+                System.out.println((i+1) + ". Student " + namesOfKicked[i].name + " has average estimate: " + namesOfKicked[i].ovverageMark + ". Index (" + i + ")");
+        }
+        System.out.println("------------------------------------");
 
     }
 
     Group(int numberOfStudents){
         this.numberOfStudents = numberOfStudents;
     }
-
 
 }
 
