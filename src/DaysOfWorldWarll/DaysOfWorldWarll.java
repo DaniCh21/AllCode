@@ -4,8 +4,8 @@ import java.util.*;
 
 public class DaysOfWorldWarll {
     public static void main(String[] args){
-        GregorianCalendar start = new GregorianCalendar(1939, Calendar.SEPTEMBER, 1);
-        GregorianCalendar end = new GregorianCalendar(1945, Calendar.SEPTEMBER, 2);
+        GregorianCalendar start = new GregorianCalendar(2001, Calendar.SEPTEMBER, 12);
+        GregorianCalendar end = new GregorianCalendar(2019, Calendar.FEBRUARY, 19);
         getDateLapse(start, end);
         int dayOfStart = start.get(Calendar.DAY_OF_YEAR);
         int dayOfEnd = end.get(Calendar.DAY_OF_YEAR);

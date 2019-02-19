@@ -1,17 +1,28 @@
 package Test1;
 
+
+ class Contact {
+ String doStuff() { return "howdy "; }
+ int a = 10;
+ }
+
+ class Supplier extends Contact {
+ String doStuff() { return "send money ";}
+ }
+
 public class Dispatcher {
     public static void main(String[] args) {
-        Student s1 = new Student ("Ann" , 10.2);
-        Student s2 = new Student ("Toxa" , 10.0);
-        Student s3 = new Student ("Eld" , 9.4);
-        Student s4 = new Student ("Kate" , 11.7);
+        Supplier s1 = new Supplier();
+        System.out.println(s1.doStuff());
+        Contact c3 = new Contact();
+        System.out.println(c3.doStuff());
+        Contact c1 = s1;
+        System.out.println(c1.doStuff());
+        System.out.println(c1.a);
+        Supplier s2 = (Supplier) c1;
+        System.out.println(s2.doStuff());
+        //Supplier s3 = (Supplier) c3;
+        //Supplier s4 = new Contact();
+        }
+ }
 
-        Group nyx = new Group();
-
-        System.out.println(nyx.C[0]);
-        Student s5;
-        s5 = new Student ("Toxa" , 10.0);
-
-    }
-}

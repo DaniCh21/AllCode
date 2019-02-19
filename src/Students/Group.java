@@ -4,10 +4,10 @@ class Group {
     private boolean isChangeable = true;
     private static final int MAX_STUDENTS = 30;
     int numberOfStudents;
-    final Student students[] = new Student[MAX_STUDENTS];
-    Student temp;
+    private final Student students[] = new Student[MAX_STUDENTS];
+    private Student temp;
     int numberOfKicked = 0;
-    final Student namesOfKicked[] = new Student[MAX_STUDENTS];
+    private final Student namesOfKicked[] = new Student[MAX_STUDENTS];
 
     boolean changeStudentsMarks(int index, double newMark) {
         if (!isChangeable) {
@@ -97,12 +97,12 @@ class Group {
         if (group != null) {
             isChangeable = false;
 
-            for (int cnt = 0; cnt < group.students.length; cnt++) {
-                this.students[cnt] = group.students[cnt];
+            for (int i = 0; i < group.students.length; i++) {
+                this.students[i] = group.students[i];
             }
 
-            for (int cnt = 0; cnt < group.namesOfKicked.length; cnt++) {
-                this.namesOfKicked[cnt] = group.namesOfKicked[cnt];
+            for (int i = 0; i < group.namesOfKicked.length; i++) {
+                this.namesOfKicked[i] = group.namesOfKicked[i];
             }
 
             this.temp = group.temp;
