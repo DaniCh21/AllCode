@@ -9,21 +9,25 @@ public class PACD {
         c1.addElement(2,4);
         c1.addElement(5,5);
         c1.addElement(1,9);
-        c1.addElement(0,7);
-        c1.addElement(4,7);
-        c1.addElement(7,7);
-        c1.addElement(8,7);
-        c1.addElement(78,7);
+        c1.addElement(0,17);
+        c1.addElement(4,64);
+        c1.addElement(7,94);
+        c1.addElement(8,28);
+        c1.addElement(78,55);
         //c1.addElement(12,7);
         c1.displayAmountOfElements();
         System.out.println("//////////////////////////");
         //c1.deleteByIndex(15);
         c1.displayIndexesOfArray();
+        c1.deleteByIndex(2);
+        c1.displayIndexesOfArray();
         //c1.deleteByIndex(2);
         //c1.displayAmountOfElements();
         //c1.swipeByIndexes(5,0);
-        //c1.displayElementsOfArray();
+        c1.displayElementsOfArray();
         //System.out.println(c1.arrayOfAddedIndexes.length);
+        System.out.println(c1.amountOfIndexes);
+        System.out.println(c1.amountOfElements);
         }
 }
 
@@ -37,7 +41,6 @@ class Controller{
         arrayOfElements[index] = number;
         amountOfElements++;
         System.out.println("Element with index[" + index + "] has a number: " + number);
-        //arrayOfAddedIndexes[amountOfIndexes] = index;                                           // Should be inside if
         amountOfIndexes++;
         int counter = 0;
             while(index > arrayOfAddedIndexes[counter] && counter < amountOfIndexes){
@@ -59,6 +62,25 @@ class Controller{
             }
     }
 
+    void deleteByKey(int key){
+        int counter = 0;
+        while(arrayOfElements[counter] != key && counter < amountOfIndexes){
+            counter++;
+        }
+        if(counter != amountOfIndexes){
+            arrayOfElements[key] = 0;
+            amountOfElements--;
+            System.out.println("Element with index[" + key + "] was deleted");
+            while(key < amountOfIndexes){
+                arrayOfAddedIndexes[key] = arrayOfAddedIndexes[key + 1];
+                key++;
+            }
+            amountOfIndexes--;
+        }else {
+            System.out.println("Can't delete element with index[" + key + "], because it does not exist");
+        }
+    }
+
     void deleteByIndex(int index){
         int counter = 0;
         while(arrayOfAddedIndexes[counter] != index && counter < amountOfIndexes){
@@ -67,8 +89,12 @@ class Controller{
         if(counter != amountOfIndexes){
             arrayOfElements[index] = 0;
             amountOfElements--;
-            amountOfIndexes--;
             System.out.println("Element with index[" + index + "] was deleted");
+            while(index < amountOfIndexes){
+                arrayOfAddedIndexes[index] = arrayOfAddedIndexes[index + 1];
+                index++;
+            }
+            amountOfIndexes--;
         }else {
             System.out.println("Can't delete element with index[" + index + "], because it does not exist");
         }
@@ -86,12 +112,20 @@ class Controller{
     }
 
     void displayElementsOfArray(){
-        for(int counter = 0; counter < amountOfIndexes; counter++)
-        System.out.print("[" + arrayOfElements[arrayOfAddedIndexes[counter]] + "] ");
+        int counter;
+        System.out.print("Array of keys: ");
+        for(counter = 0; counter < amountOfIndexes; counter++) {
+            System.out.print("[" + arrayOfElements[arrayOfAddedIndexes[counter]] + "]" + "," );
+        }
+        System.out.println("[" + arrayOfElements[arrayOfAddedIndexes[counter]] + "]" + "." );
     }
     void displayIndexesOfArray(){
-        for(int counter = 0; counter < amountOfIndexes; counter++)
-            System.out.print("[" + arrayOfAddedIndexes[counter] + "] ");
+        int counter;
+        System.out.print("Array of indexes: ");
+        for(counter = 0; counter < amountOfIndexes - 1; counter++) {
+            System.out.print("[" + arrayOfAddedIndexes[counter] + "]" + ",");
+        }
+        System.out.println("[" + arrayOfAddedIndexes[counter]+ "]" + ".");
     }
 }
 
