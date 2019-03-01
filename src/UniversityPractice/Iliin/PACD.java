@@ -1,4 +1,4 @@
-package UniversityPractice;
+package UniversityPractice.Iliin;
 
 public class PACD {
     public static void main(String[] args) {
@@ -15,18 +15,21 @@ public class PACD {
         c1.addElement(78,55);
         //c1.addElement(12,7);
         c1.displayAmountOfAddedElements();
+        System.out.println("//////////////////////////");
         //c1.deleteByIndex(15);
-        c1.displayIndexesOfArray();
+        //c1.displayIndexesOfArray();
         c1.deleteByIndex(2);
-        c1.displayIndexesOfArray();
+        //c1.displayIndexesOfArray();
         //c1.deleteByIndex(2);
         //c1.displayAmountOfAddedElements();
         c1.swipeByIndexes(5,0);
-        //c1.displayAddedElementsOfArray();
         //System.out.println(c1.arrayOfAddedIndexes.length);
-        System.out.println(c1.amountOfElements);
+        //System.out.println(c1.amountOfElements);
         c1.deleteByKey(65);
         c1.displayAddedElementsOfArray();
+        c1.shiftElements(3);
+
+
     }
 }
 
@@ -80,7 +83,7 @@ class Controller{
         if(counter != amountOfElements){
             arrayOfElements[index] = 0;
             System.out.println("Element with index[" + index + "] was deleted");
-            while(index < amountOfElements){                                                        //sorts indexes
+            while(index < amountOfElements){                                                        // sorts indexes
                 arrayOfAddedIndexes[index] = arrayOfAddedIndexes[index + 1];
                 index++;
             }
@@ -91,11 +94,58 @@ class Controller{
         }
     }
 
+    void shiftElements(int numOfShifts){                                                            // method that shifts elements on received amount of shifts (the advantage of this realizations is that it do not remember its previous input, it creates new array each time, by doing this code won't get stuck during adding, deleting and swiping before and after summoning that method)
+        int[] shiftedArray = new int[amountOfElements];                                             // was decided to create a separated array (since it's the best decision IMHO for that particular code) and than translate current array of elements to it
+        for(int i = 0; i < amountOfElements; i++) {                                                 // assigning only added element to shiftedArray
+            shiftedArray[i] = arrayOfElements[arrayOfAddedIndexes[i]];
+        }
+
+        System.out.print("Your original array before shifting: ");
+        int counter2;
+        for( counter2 = 0; counter2 < shiftedArray.length - 1; counter2++) {                        // inputs how array was looking before shifting
+            System.out.print("[" + shiftedArray[counter2] + "]" + "," );
+        }
+        System.out.println("[" + shiftedArray[counter2] + "]" + "." );
+
+        int temp1 = shiftedArray[0];                                                                // implementation of shifting
+        for(int i = 0; i < numOfShifts; i++){
+            for(int k = 0; k < shiftedArray.length - 1; k++){
+                shiftedArray[k] = shiftedArray[k + 1];
+            }
+            shiftedArray[shiftedArray.length - 1] = temp1;
+            temp1 = shiftedArray[0];
+        }
+
+        System.out.print("Your shifted array with " + numOfShifts + " shifts: ");
+        int counter;
+        for( counter = 0; counter < shiftedArray.length - 1; counter++) {                           // inputs array after shifting
+            System.out.print("[" + shiftedArray[counter] + "]" + "," );
+        }
+        System.out.println("[" + shiftedArray[counter] + "]" + "." );
+        System.out.println();
+    }
+
     void swipeByIndexes(int index1, int index2){                                                    //method that swipes two indexes using temporary variable
+        System.out.print("Array before shifting: ");
+        int counter;
+        for(counter = 0; counter < amountOfElements - 1; counter++) {
+            System.out.print("[" + arrayOfElements[arrayOfAddedIndexes[counter]] + "]" + "," );
+        }
+        System.out.println("[" + arrayOfElements[arrayOfAddedIndexes[counter]] + "]" + "." );
+
         int temp = arrayOfElements[index1];
         arrayOfElements[index1] = arrayOfElements[index2];
         arrayOfElements[index2] = temp;
-        System.out.println(arrayOfElements[index1] + " and second " + arrayOfElements[index2]);     //just to check that it works
+        //System.out.println(arrayOfElements[index1] + " and second " + arrayOfElements[index2]);     //just to check that it works
+
+        System.out.print("Array after shifting: ");
+        int counter2;
+        for(counter2 = 0; counter2 < amountOfElements - 1; counter2++) {
+            System.out.print("[" + arrayOfElements[arrayOfAddedIndexes[counter2]] + "]" + "," );
+        }
+        System.out.println("[" + arrayOfElements[arrayOfAddedIndexes[counter2]] + "]" + "." );
+
+
     }
 
     void displayAmountOfAddedElements(){                                                            //method that displays average amount of added elements (for debugging or something)

@@ -1,4 +1,4 @@
-package UniversityPractice;
+package UniversityPractice.Iliin;
 
 public class FindMinMax {
     public static void main(String[] args) {
